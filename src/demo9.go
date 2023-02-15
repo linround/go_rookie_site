@@ -2,6 +2,18 @@ package main
 
 import "fmt"
 
+// map迭代
+func main3() {
+	map1 := make(map[int]float32)
+	map1[1] = 10.00
+	map1[2] = 20
+	map1[3] = 30.01
+	map1[4] = 40
+	for key, value := range map1 {
+		fmt.Printf("key %d  value %f \n", key, value)
+	}
+}
+
 func main2() {
 	strings := []string{"google", "run"}
 	for i, s := range strings {
@@ -28,6 +40,7 @@ func main() {
 		sum += i
 	}
 	// go关键字有点类似async的意思
+	main3()
 	main2()
 	go main1()
 	fmt.Println(sum)
