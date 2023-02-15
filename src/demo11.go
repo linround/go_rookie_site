@@ -16,7 +16,7 @@ func ptr() {
 	a := 100
 	b := 1000
 	ptrSwap(&a, &b)
-	fmt.Println(a, b, 666666666666)
+	fmt.Println(a, b)
 	fmt.Println(*&a) // 先获取a地址，再获取a地址的值
 }
 
