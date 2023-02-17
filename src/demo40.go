@@ -1,8 +1,31 @@
 package main
 
+import "fmt"
+
 func main() {
 	res := sw(2)
 	println(res)
+	println("fo开始")
+	fo()
+}
+
+func fo() {
+	// 中文编码乱码
+	str := "日本語"
+	println(str)
+	for ix := 0; ix < len(str); ix++ {
+		fmt.Printf("%c", str[ix])
+	}
+	str2 := "中文"
+	println(str2)
+	for ix := 0; ix < len(str2); ix++ {
+		fmt.Printf("%c \n", str2[ix])
+	}
+	str3 := "english"
+	println(str3)
+	for ix := 0; ix < len(str3); ix++ {
+		fmt.Printf("%c \n", str3[ix])
+	}
 }
 
 func sw(i int) int {
@@ -22,6 +45,5 @@ func sw(i int) int {
 	default:
 		println("end")
 		return 100
-
 	}
 }
