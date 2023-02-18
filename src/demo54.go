@@ -11,6 +11,7 @@ func main() {
 	b := big.NewInt(1)
 	c := big.NewInt(math.MaxInt)
 	e := big.NewInt(0)
+	//关于大数的运算
 	a.Add(a, c) // c+0
 	b.Add(b, c) // c+1
 	e.Sub(b, a) // b-a

@@ -1,5 +1,6 @@
 package demo25
 
+// 测试包 demo25
 import "fmt"
 
 func P() {
