@@ -61,7 +61,13 @@ func main() {
 	showValue(o)
 	showText(o)
 	// 此处用来判断 接口对应的结构体类型
+	// oInt 中是否包含 ‘stockPosition’ 类型的变量
 	u, ok := oInt.(*stockPosition)
+	// 以下可以用来检测某个值是否实现了某个接口
+	// 接口是一种特殊的约定，实现类型必须满足，接口描述了类型的行为，规定类型可以做什么
+	// 多态的本质就是
+	// 相同接口的变量 在不同的时刻表现出不同的行为
+	//u, ok := oInt.(valuable)
 	fmt.Println("u:", u, ok)
 	if ok {
 		fmt.Println("u:", u)
