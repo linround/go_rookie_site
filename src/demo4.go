@@ -8,9 +8,6 @@ import (
 // 使用const 声明常量
 const a string = "abc" //显式类型定义：
 const b = "abc"        // 隐式类型定义
-const (
-	c = unsafe.Sizeof(a)
-)
 
 func main() {
 	const LENGTH int = 10
@@ -23,5 +20,9 @@ func main() {
 	println()
 	println("面积为:", area)
 	println()
+	const (
+		c = unsafe.Sizeof(a)
+	)
+
 	println(c)
 }
