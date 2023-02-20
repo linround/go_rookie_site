@@ -16,6 +16,8 @@ import (
 //-sdasda
 //-asda
 
+// 以下是使用命令行进行输出
+
 var NewLine = flag.Bool("d", false, "新的一行")
 
 func main() {
