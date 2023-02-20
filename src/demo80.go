@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 )
 
@@ -17,18 +16,19 @@ import (
 //-sdasda
 //-asda
 
-var NewLine = flag.Bool("dddd", false, "新的一行")
+var NewLine = flag.Bool("d", false, "新的一行")
 
 func main() {
-	flag.PrintDefaults()
+	//flag.PrintDefaults()
+	// flag.Parse() 扫描参数列表（或者常量列表）并设置 flag
 	flag.Parse()
 	var s string = ""
-	nArg := flag.NArg()
-	fmt.Println("nArg:", nArg)
+	//nArg := flag.NArg()
+	//fmt.Println("nArg:", nArg)
 	for i := 0; i < flag.NArg(); i++ {
 		if i > 0 {
 			s += " "
-			if NewLine != nil {
+			if *NewLine {
 				s += "\n"
 			}
 		}
