@@ -37,12 +37,12 @@ func main() {
 		//cat(bufio.NewReader(f))
 		// 使用切片来读取文件
 		catF(f)
-		f.Close()
 	}
 }
 
 // 使用切片来读取文件
 func catF(f *os.File) {
+	defer f.Close()
 	fmt.Println("使用切片来读取")
 	const nbuf = 512
 	var buf [nbuf]byte
