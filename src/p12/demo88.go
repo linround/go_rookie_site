@@ -8,7 +8,7 @@ import (
 func main() {
 	var example = []string{
 		"1 2 3 4 5",
-		"100 50 25 12.5 6.25",
+		"100 50 25 p12.5 6.25",
 		"2 + 2 = 4",
 		"lst class",
 		"",
