@@ -16,6 +16,7 @@ func readFile() {
 	}
 
 	file, err2 := os.Open(ex + "/src/p16/main8.text")
+
 	if err2 != nil {
 		fmt.Println("读取文件错误")
 	}
