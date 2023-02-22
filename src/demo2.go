@@ -1,7 +1,9 @@
 package main
 
 import (
+	"./global"
 	"./sysApi"
+	"./sysFun"
 	"fmt"
 )
 
@@ -14,8 +16,10 @@ func main() {
 	// Printf 生成格式化字符串并写入标准输出
 	var targetUrl = fmt.Sprintf(url, stockCode, endDate)
 	fmt.Println(targetUrl)
-
 	// 对于不同的结构体定义，可放在不同文件中
 	api := new(sysApi.SysRouter)
 	api.Test()
+	sysFun.AddName()
+	api.AddSys()
+	fmt.Println(global.Global["name"])
 }
