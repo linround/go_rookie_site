@@ -19,7 +19,7 @@ func main() {
 	// 对于不同的结构体定义，可放在不同文件中
 	api := new(sysApi.SysRouter)
 	api.Test()
-	sysFun.AddName()
 	api.AddSys()
+	sysFun.AddName()
 	fmt.Println(global.Global["name"])
 }
