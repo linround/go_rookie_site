@@ -12,6 +12,7 @@ type Blog struct {
 	Content string `mapstructure:"content"`
 	Uid     string `mapstructure:"uid"`
 	State   string `mapstructure:"state"`
+	UUU     string `mapstructure:"state"`
 }
 
 type Event struct {
