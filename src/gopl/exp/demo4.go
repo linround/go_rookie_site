@@ -15,6 +15,7 @@ type Friend1 struct {
 	Person
 }
 
+// mapstructure
 // ,squash 与.remain
 // ,remain 中，未被映射的值会放在该字段中
 // ,squash 中，嵌套的结构被认为是拥有该结构体名字的另一个字段 提升字段
