@@ -1,7 +1,6 @@
 package main
 
 import (
-	"gopl.io/ch4/github"
 	"html/template"
 	"log"
 	"os"
@@ -33,15 +32,19 @@ var report = template.Must(template.New("issuelist").
 	Parse(templ))
 
 func main() {
-	result, err := github.SearchIssues(os.Args[1:])
-	if err != nil {
+	const templ = `<p>A: {{.A}}</p><p>B: {{.B}}</p>`
+	t := template.Must(template.New("escape").Parse(templ))
+	var data struct {
+		A string        // untrusted plain text
+		B template.HTML // trusted HTML // 采用可信的属性标准从而，把该模板不做转义，当作正常的html输出
+	}
+	data.A = "<b>Hello!</b>"
+	data.B = "<b>Hello!</b>"
+	if err := t.Execute(os.Stdout, data); err != nil {
 		log.Fatal(err)
 	}
-	if err := report.Execute(os.Stdout, result); err != nil {
-		log.Fatal(err)
-	}
-
 }
+
 func daysAgo(t time.Time) int {
 	return int(time.Since(t).Hours() / 24)
 }
