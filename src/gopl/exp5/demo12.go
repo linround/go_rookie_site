@@ -22,25 +22,36 @@ func (p point) distance(q point) float64 {
 	return math.Hypot(q.x-p.x, q.y-p.y)
 }
 
-type path []point
+func (p *point) ScaleBy(factor float64) {
+	(*p).x *= factor
+	(*p).y *= factor
+}
 
-func (pa path) distance() float64 {
+type myPath []point
+
+func (pa *myPath) distance() float64 {
 	sum := 0.0
-	for i := range pa {
+	for i := range *pa {
 		if i > 0 {
 			// 计算两个点之间的距离
-			sum += pa[i-1].distance(pa[i])
+			sum += (*pa)[i-1].distance((*pa)[i])
 		}
 	}
 	return sum
 }
 
 func main() {
-	perim := path{
+	perim := myPath{
 		{1, 1},
 		{1, 2},
 		{2, 2},
 		{2, 1},
 	}
 	fmt.Println(perim.distance())
+
+	po := point{4, 4}
+	po.ScaleBy(2)
+	fmt.Println(po)
+	p := point{5, 4}
+	p.ScaleBy(2)
 }
