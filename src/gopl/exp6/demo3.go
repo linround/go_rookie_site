@@ -4,7 +4,7 @@ import "fmt"
 
 type Buffer struct {
 	buf     []byte
-	initial [64]byte
+	initial [0]byte
 }
 
 func (b *Buffer) Grow(n int) {
@@ -15,18 +15,18 @@ func (b *Buffer) Grow(n int) {
 
 	}
 	//
-	if len(b.buf)+n < cap(b.buf) {
-		// make
-		// 参数1是类型
-		// 参数2是长度
-		// 参数三是预留内存空间
-		buf := make([]byte, len(b.buf)+n, 2*cap(b.buf)+n)
-		fmt.Println(len(buf))
-		fmt.Println(cap(buf))
-		b.buf = buf
-	}
-	b.buf[5] = 5
-	fmt.Println(n)
+	//if len(b.buf)+n > cap(b.buf) {
+	//	// make
+	//	// 参数1是类型
+	//	// 参数2是长度
+	//	// 参数三是预留内存空间
+	//	buf := make([]byte, len(b.buf)+n, 2*cap(b.buf)+n)
+	//	fmt.Println(len(buf))
+	//	fmt.Println(cap(buf))
+	//	//b.buf = buf
+	//}
+	b.buf = append(b.buf, 5)
+	fmt.Println(b.buf[0])
 }
 
 func main() {
