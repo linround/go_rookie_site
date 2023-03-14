@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"image/color"
 	"math"
+	"sync"
 )
 
 type point struct {
@@ -20,24 +21,32 @@ func (p *point) distance(q point) float64 {
 }
 
 type colorPoint struct {
-	point
+	*point
 	color color.RGBA
 }
 
 func main() {
-	var cp colorPoint
-	cp.x = 1
-	fmt.Println(cp.point.x)
-	cp.point.y = 2
-	fmt.Println(cp.y)
-
+	//var cp colorPoint
+	//cp.point.x = 1
+	//fmt.Println(cp.point.x)
+	//cp.point.y = 2
+	//fmt.Println(cp.y)
+	var cache = struct {
+		sync.Mutex
+		mapping map[string]string
+	}{
+		mapping: map[string]string{"name": "testName"},
+	}
+	cache.Lock()
+	fmt.Println(cache.mapping["name"])
+	cache.Unlock()
 	red := color.RGBA{R: 255, A: 255}
 	blue := color.RGBA{B: 255, A: 255}
-	var p = colorPoint{point{1, 1}, red}
-	var q = colorPoint{point{5, 4}, blue}
-	fmt.Println(p.distance(q.point))
+	var p = colorPoint{&point{1, 1}, red}
+	var q = colorPoint{&point{5, 4}, blue}
+	fmt.Println(p.distance(*q.point))
 	p.scaleBy(2)
 	q.scaleBy(2)
 
-	fmt.Println(p.distance(q.point))
+	fmt.Println(p.distance(*q.point))
 }
