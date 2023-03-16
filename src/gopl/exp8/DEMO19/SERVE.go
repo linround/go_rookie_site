@@ -49,7 +49,7 @@ func broadcaster() {
 	}
 }
 func handleConn(conn net.Conn) {
-	// 发送客户端消息的通道 将军往外发消息的通道
+	// 发送客户端消息的通道 将要往外发消息的通道
 	ch := make(chan string)
 	fmt.Println("h1")
 	// 所以这里需要在向客户端写入消息前，就创建一个goroutine，进入等待状态
@@ -116,7 +116,7 @@ func main() {
 	go broadcaster()
 	fmt.Println("m3")
 	for {
-		fmt.Println("m4")
+		fmt.Println("m4") //
 		// 只执行serve时会执行到m4
 		conn, _ := listener.Accept()
 		// (当有一个连接进入时会执行到m5,m6,1,2,3,4,5,6,m4)再次进入到m4的阻塞等待
@@ -131,9 +131,24 @@ func main() {
 
 // 启动服务的过程
 // m1 m2 m3 m4 b1 b2 b3
+// 顺序执行到m4，然后进如广播监听状态-1阶段
+// m2之后进入广播goroutine
+// 广播执行到b3 进入select等待状态-2阶段
 
 // 连接接入
-// m5 m6 m4 h1 h2 c1 h3 h4 c2 b4 b3 b6 b3 h5 h6 c3
+// m5 m6 m4
+// 再次执行到m4进入等待状态
+// m5 之后进入连接处理goroutine
+// h1
+// h2
+// 执行一个客户端goroutine
+// c1
+// h3
+// h4
+// c2
+// 往链接里面写入 msg
+// b4 b3 b6 b3 h5 h6 c3
+//
 
 // 发送第一条消息
 // h7 h8 b4 b5 b3 c2 c3
