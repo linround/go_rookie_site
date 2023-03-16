@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	conn, err := net.Dial("tcp", "121.199.1.247:8000")
+	//conn, err := net.Dial("tcp", "121.199.1.247:8000") // 远程
+	conn, err := net.Dial("tcp", "0.0.0.0:8000") // 本地
 	if err != nil {
 		log.Fatal(err)
 	}
