@@ -7,11 +7,11 @@ import (
 
 func main() {
 	var x, y int
-	go func() {
+	go func() { //g7
 		x = 1                   // A1
 		fmt.Print("y:", y, " ") // A2
 	}()
-	go func() {
+	go func() { //g8
 		y = 1                   // B1
 		fmt.Print("x:", x, " ") // B2
 	}()
