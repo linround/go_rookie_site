@@ -1,0 +1,5 @@
+mode: set
+rookie/src/test/word/word.go:3.34,4.19 1 1
+rookie/src/test/word/word.go:4.19,5.28 1 1
+rookie/src/test/word/word.go:5.28,7.4 1 1
+rookie/src/test/word/word.go:9.2,9.13 1 1
